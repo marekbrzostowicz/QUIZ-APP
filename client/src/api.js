@@ -1,4 +1,9 @@
-export const sendParams = (numberOfQuestions, diffcultyLevel, topic) => {
+export const sendParams = (
+  numberOfQuestions,
+  diffcultyLevel,
+  topic,
+  explanation
+) => {
   console.log(numberOfQuestions, diffcultyLevel, topic);
   return fetch("http://localhost:3001/api/prompt", {
     method: "POST",
@@ -9,6 +14,7 @@ export const sendParams = (numberOfQuestions, diffcultyLevel, topic) => {
       number: numberOfQuestions,
       level: diffcultyLevel,
       testTopic: topic,
+      explanation: explanation,
     }),
   })
     .then((response) => {
@@ -26,3 +32,4 @@ export const sendParams = (numberOfQuestions, diffcultyLevel, topic) => {
       console.error("Error", error);
     });
 };
+

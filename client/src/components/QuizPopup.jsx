@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import Topics from "../popup/Topics";
 import Difficulty from "../popup/Difficulty";
@@ -9,6 +9,11 @@ const QuizPopup = ({ isOpen, onClose, onStartGeneration }) => {
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
 
   const [error, setError] = useState(false);
+  useEffect(() => {
+    setNumberOfQuestions(1);
+    setSelectedTopic("");
+    setSelectedDifficulty("");
+  }, [onStartGeneration]);
 
   if (!isOpen) return null;
 

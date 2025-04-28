@@ -20,7 +20,7 @@ app.post("/api/prompt", async (req, res) => {
     return res.status(500).send("Error with api key");
   }
 
-  const prompt = `Wygeneruj ${number} pytan z ${testTopic} z 4 opcjami a, b, c, d i wskaż poprawną odpowiedź. Poziom trudności testu - ${level}. Napisz tylko pytania i nic więcej. Cały test prześlij w formacie JSON gdzie klucz to questions i tablica obiektow jako warosc a w pojedynych obiektach question options i correct_answer jako klucze. Test w jezyku polskim`;
+  const prompt = `Wygeneruj ${number} pytan z ${testTopic} z 4 opcjami a, b, c, d i wskaż poprawną odpowiedź. Poziom trudności testu - ${level}. Napisz tylko pytania i nic więcej. Cały test prześlij w formacie JSON gdzie klucz to questions i tablica obiektow jako warosc a w pojedynych obiektach question options i correct_answer oraz explanation jako klucze. Test w jezyku polskim. W explanation napisz 3 zwięzłe zdania wyjańsnijace poprawną odpowiedz na pytanie`;
 
   const requestBody = {
     model: "grok-2",
@@ -55,6 +55,7 @@ const parseTest = (data) => {
   const questionArray = [];
   const answersArray = [];
   const optionsArray = [];
+  const explanationArray = [];
   const lines = data.split("\n");
   const slicedLines = lines.slice(1, -1);
   const readyToJSON = slicedLines.join("\n");
@@ -67,21 +68,25 @@ const parseTest = (data) => {
       questionObj &&
       questionObj.question &&
       questionObj.options &&
-      questionObj.correct_answer
+      questionObj.correct_answer &&
+      questionObj.explanation
     ) {
       questionArray.push(questionObj.question);
       optionsArray.push(questionObj.options);
       answersArray.push(questionObj.correct_answer);
+      explanationArray.push(questionObj.explanation);
     }
   }
-  console.log(questionArray);
-  console.log(answersArray);
-  console.log(optionsArray);
+  // console.log(questionArray);
+  // console.log(answersArray);
+  // console.log(optionsArray);
+  console.log(explanationArray);
 
   return {
     questions: questionArray,
     options: optionsArray,
     answers: answersArray,
+    explanation: explanationArray,
   };
 };
 
