@@ -1,0 +1,1 @@
+A web application where users can specify the number of questions, topic, and difficulty level to generate a quiz powered by the Grok-2 model. After answering each question, users have the option to view an explanation of the correct answer.
