@@ -18,7 +18,7 @@ const Topics = ({ currentTopic, onTopicSelect }) => {
         <button
           className={`border-2 rounded-2xl  px-3 py-2 font-thin  ${
             currentTopic === "python"
-              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg"
+              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg font-bold"
               : "border-rose-500 text-gray-400 hover:border-emerald-300 hover:bg-neutral-600"
           }`}
           onClick={() => onTopicSelect("python")}
@@ -28,17 +28,17 @@ const Topics = ({ currentTopic, onTopicSelect }) => {
         <button
           className={`border-2 rounded-2xl  px-3 py-2 font-thin  ${
             currentTopic === "programming"
-              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg"
+              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg font-bold"
               : "border-rose-500 text-gray-400 hover:border-emerald-300 hover:bg-neutral-600"
           }`}
           onClick={() => onTopicSelect("programming")}
         >
-          PROGRAMOWANIE
+          WIEDZA OGÓLNA
         </button>
         <button
           className={`border-2 rounded-2xl  px-3 py-2 font-thin ${
             currentTopic === "java-script"
-              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg"
+              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg font-bold"
               : "border-rose-500 text-gray-400 hover:border-emerald-300 hover:bg-neutral-600"
           }`}
           onClick={() => onTopicSelect("java-script")}

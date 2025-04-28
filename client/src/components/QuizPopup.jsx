@@ -38,12 +38,12 @@ const QuizPopup = ({ isOpen, onClose, onStartGeneration }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-      <div className="text-white bg-cyloDark flex flex-col items-center p-8 rounded-2xl border-2 border-gray-600 relative">
+      <div className="text-white bg-cyloDark flex flex-col items-center p-8 rounded-2xl shadow-2xl shadow-neutral-800 relative">
         <button
           className="absolute top-3 right-3 hover:text-gray-600"
           onClick={onClose}
         >
-          <FaTimes className="text-gray-400 hover:text-red-400" />
+          <FaTimes className="text-gray-400 hover:text-rose-400" />
         </button>
         <div className="flex flex-col items-center mb-6">
           <p className="text-gray-400 font-bold text-xl mb-4">LICZBA PYTAŃ</p>

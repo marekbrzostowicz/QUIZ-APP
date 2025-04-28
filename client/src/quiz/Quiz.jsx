@@ -4,15 +4,15 @@ import { BiUpArrowCircle } from "react-icons/bi";
 
 const Quiz = ({ quizData, testParams, loadingComplete, resetCounter }) => {
   const [userSelection, setUserSelection] = useState({});
+  const [dispalyExplanation, setDisplayExplanation] = useState(() => {
+    let array = {};
+    for (let i = 0; i < quizData.explanation.length; i++) {
+      array[i] = false;
+    }
+    return array;
+  });
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [countAnswers, setCountAnswers] = useState(0);
-  const [dispalyExplanation, setDisplayExplanation] = useState(() => {
-    let n = {};
-    for (let i = 0; i < quizData.explanation.length; i++) {
-      n[i] = false;
-    }
-    return n;
-  });
 
   const scrollDiv = useRef(null);
 
@@ -51,11 +51,18 @@ const Quiz = ({ quizData, testParams, loadingComplete, resetCounter }) => {
 
   const handleClick = (e) => {
     const clickedButton = e.target.closest("button");
+    // if (
+    //   Object.prototype.hasOwnProperty.call(
+    //     parseInt(clickedButton.dataset.question)
+    //   ) ||
+    //   !clickedButton
+    // ) {
+    //   return;
+    // }
     if (
-      Object.prototype.hasOwnProperty.call(
-        parseInt(clickedButton.dataset.question)
-      ) ||
-      !clickedButton
+      userSelection.hasOwnProperty(
+        parseInt(clickedButton.dataset.question) || !clickedButton
+      )
     ) {
       return;
     }
@@ -73,7 +80,7 @@ const Quiz = ({ quizData, testParams, loadingComplete, resetCounter }) => {
         setCorrectAnswers(correctAnswers + 1);
         // console.log("PRAWDA");
       } else {
-        // console.log("FALSZ");
+        // console.log("FAŁSZ");
       }
     }
   };
@@ -124,15 +131,16 @@ const Quiz = ({ quizData, testParams, loadingComplete, resetCounter }) => {
             <>
               <div
                 key={index}
+                // !!!!!!!!!!!!!!!!!!!!!!!!!!!
                 className={`mb-10 p-10 bg-cyloDarker rounded-2xl shadow-2xl border-l-4 relative 
                 ${
-                  !Object.prototype.hasOwnProperty.call(index + 1)
+                  !userSelection.hasOwnProperty(index + 1)
                     ? "border-fuchsia-700"
                     : "border-neutral-600 opacity-70"
                 }`}
               >
                 <div className="absolute text-white bottom-4 right-4">
-                  {Object.prototype.hasOwnProperty.call(index + 1) &&
+                  {userSelection.hasOwnProperty(index + 1) &&
                     (dispalyExplanation[index] === true ? (
                       <FaArrowUp
                         className="text-gray-400 hover:text-gray-100"
@@ -219,7 +227,7 @@ const Quiz = ({ quizData, testParams, loadingComplete, resetCounter }) => {
 
           {countAnswers !== testParams.number && (
             <div className="text-gray-500">
-              Udziel odpowiedzi na wszyskie pytania
+              Udziel odpowiedzi na wszystkie pytania
             </div>
           )}
         </div>

@@ -8,7 +8,7 @@ const Difficulty = ({ onDifficultySelect, currentDifficulty }) => {
         <button
           className={`px-3 py-2 rounded-2xl border-2 font-thin ${
             currentDifficulty === "easy"
-              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg"
+              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg font-bold"
               : "border-rose-500 text-gray-300 hover:border-emerald-300 hover:bg-neutral-600"
           }`}
           onClick={() => onDifficultySelect("easy")}
@@ -18,7 +18,7 @@ const Difficulty = ({ onDifficultySelect, currentDifficulty }) => {
         <button
           className={`px-3 py-2 rounded-2xl border-2 font-thin ${
             currentDifficulty === "medium"
-              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg"
+              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg font-bold"
               : "border-rose-500 text-gray-300 hover:border-emerald-300 hover:bg-neutral-600"
           }`}
           onClick={() => onDifficultySelect("medium")}
@@ -28,7 +28,7 @@ const Difficulty = ({ onDifficultySelect, currentDifficulty }) => {
         <button
           className={`px-3 py-2 rounded-2xl border-2 font-thin ${
             currentDifficulty === "hard"
-              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg"
+              ? "bg-neutral-600 border-emerald-400 text-white scale-105 shadow-lg font-bold"
               : "border-rose-500 text-gray-300 hover:border-emerald-300 hover:bg-neutral-600"
           }`}
           onClick={() => onDifficultySelect("hard")}
